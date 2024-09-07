@@ -72,8 +72,7 @@ One issue with unbalanced classification is that there are too few samples of th
 Synthesizing new instances from the minority class is an improvement over replicating examples from the minority class. It is a particularly efficient type of data augmentation for tabular data. In our project, create an instance of the SMOTE class and then apply SMOTE to the dataset (X, y). We can see equal distribution over resampled dataset shape.
 ## Train-Test split
 In this approach, we split the data randomly into a train set and a test set (80% — 20% split) using train_test_split function from the sklearn.model_selection module. In our case the function is like:
-```x_train, x_test, y_train, y_test = train_test_split(x_smote, y_smote, test_size=0.2, random_state=42)
-```
+x_train, x_test, y_train, y_test = train_test_split(x_smote, y_smote, test_size=0.2, random_state=42)
 1. x_smote: This is the feature set that you want to split into training and testing sets.
 2.	y_smote: This is the target variable corresponding to x_smote that you want to split.
 3.	test_size=0.2: This specifies the proportion of the dataset to include in the test split. Here, 20% of the data will be used for testing, and the remaining 80% will be used for training.
@@ -88,6 +87,7 @@ Steps involved are:
 5.	Select the model that achieved the best metrics in the singular test set and do hyperparameter tuning with that model for model improvement 
 6.	After fitting with the best parameters, predictions are made with best model and evaluate the classification metrics for that model
 To perform Model Training, we will use several different models like Logistic Regression, Random Forest, XGBoost, etc., Before that, we need to split the data. All these models can be built feasibly using the algorithms provided by the scikit-learn package. Only for the XGBoost model, we are going to use the xgboost package.
+
 **Logistic Regression:-** Logistic Regression is a statistical and machine learning technique used for binary classification problems –that is, situations where your data observations belong to one of two possible categories. Therefore, the outcome must be a categorical or discrete value. It can be either Yes or No, 0 or 1, true or False, etc. but instead of giving the exact value as 0 and 1, it gives the probabilistic values which lie between 0 and 1. 
 Steps involved are:
 1.	Binary Outcomes Modeling: The crux of Logistic Regression lies in its ability to estimate the probability that a given input point belongs to a particular category.
@@ -100,6 +100,7 @@ Cons of Logistic Regression:
 -	Not as powerful as more complex classifiers like Random Forest or Gradient Boosting.
 -	Can be sensitive to outliers and influential points.
 -	Performance may suffer with non-linear decision boundaries.
+  
 **Random Forest:-** Random Forest is a classifier that contains a number of decision trees on various subsets of the given dataset and takes the average to improve the predictive accuracy of that dataset. The greater number of trees in the forest leads to higher accuracy and prevents the problem of overfitting.
 Procedure:
 Random Forest works in two-phase first is to create the random forest by combining N decision tree, and second is to make predictions for each tree created in the first phase.
@@ -109,6 +110,7 @@ Step-2: Build the decision trees associated with the selected data points (Subse
 Step-3: Choose the number N for decision trees that you want to build.
 Step-4: Repeat Step 1 & 2.
 Step-5: For new data points, find the predictions of each decision tree, and assign the new data points to the category that wins the majority votes.
+
 **XGBoost (Extreme Gradient Boosting):-** XGBoost employs a technique called gradient boosting. This is where the algorithm starts by creating a simple decision tree and then iteratively adds more trees to the model, each one focusing on correcting the errors made by the previous trees. This process continues until a predetermined number of trees is reached or the model’s performance no longer improves significantly. It has become one of the most popular and widely used machine learning algorithms due to its ability to handle large datasets and its ability to achieve state-of-the-art performance in many machine learning tasks such as classification and regression. 
 XGBoost generally outperforms Random Forest in many aspects, including:
 -	Overfitting: XGBoost's tree pruning prevents overfitting, while Random Forest can overfit with similar samples.
@@ -152,10 +154,10 @@ It tells us how well a machine learning model can separate things into different
 6. Confusion Matrix
 Typically, a confusion matrix is a visualization of a classification model that shows how well the model has predicted the outcomes when compared to the original ones. Usually, the predicted outcomes are stored in a variable that is then converted into a correlation table. Using the correlation table, the confusion matrix is plotted in the form of a heatmap. 
 There are 4 terms you should keep in mind: 
-1.	True Positives: It is the case where we predicted Yes and the real output was also yes.
-2.	True Negatives: It is the case where we predicted No and the real output was also No.
-3.	False Positives: It is the case where we predicted Yes but it was actually No.
-4.	False Negatives: It is the case where we predicted No but it was actually Yes.
+	 - True Positives: It is the case where we predicted Yes and the real output was also yes.
+  - True Negatives: It is the case where we predicted No and the real output was also No.
+  - False Positives: It is the case where we predicted Yes but it was actually No.
+  - False Negatives: It is the case where we predicted No but it was actually Yes.
 #### Models Test Results
 ![image](https://github.com/user-attachments/assets/4baadf54-18c1-4457-ae8d-d3943de26a95)
 -	For logistic regression model, out of 56976 True Fraud transactions, 4706 is predicting incorrectly as normal. i.e. Recall score is low. It has only 91% recall score.
