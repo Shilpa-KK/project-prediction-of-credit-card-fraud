@@ -37,7 +37,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 !pip install xgboost
 from xgboost import XGBClassifier
-from sklearn.model_selection import GridSearchCV```
+from sklearn.model_selection import GridSearchCV
+```
 - pandas: used to perform data manipulation and analysis.
 - numpy: used to perform a wide variety of mathematical operations on arrays.
 - matplotlib: used for data visualization.
@@ -70,8 +71,9 @@ Store the input attributes in variable X and output attribute in variable y. Her
 One issue with unbalanced classification is that there are too few samples of the minority class for a model to learn the decision boundary successfully. Oversampling instances from the minority class is one solution to the issue. Before fitting a model, we duplicate samples from the minority class in the training set.
 Synthesizing new instances from the minority class is an improvement over replicating examples from the minority class. It is a particularly efficient type of data augmentation for tabular data. In our project, create an instance of the SMOTE class and then apply SMOTE to the dataset (X, y). We can see equal distribution over resampled dataset shape.
 ## Train-Test split
-In this approach, we split the data randomly into a train set and a test set (80% — 20% split) using ```train_test_split``` function from the sklearn.model_selection module. In our case the function is like:
-```x_train, x_test, y_train, y_test = train_test_split(x_smote, y_smote, test_size=0.2, random_state=42)```
+In this approach, we split the data randomly into a train set and a test set (80% — 20% split) using train_test_split function from the sklearn.model_selection module. In our case the function is like:
+```x_train, x_test, y_train, y_test = train_test_split(x_smote, y_smote, test_size=0.2, random_state=42)
+```
 1. x_smote: This is the feature set that you want to split into training and testing sets.
 2.	y_smote: This is the target variable corresponding to x_smote that you want to split.
 3.	test_size=0.2: This specifies the proportion of the dataset to include in the test split. Here, 20% of the data will be used for testing, and the remaining 80% will be used for training.
